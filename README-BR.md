@@ -1,69 +1,67 @@
-# KaliArch
+# AutoKALI
 
 ## Índice
-* [Como funciona?](#como-funciona)
-* [Uso](#uso)
+* [Sobre](#-sobre)
+* [Como funciona](#como-funciona)
+* [Modos de Uso](#modos-de-uso)
+* [Recomendações](#recomendações)
 * [Futuras funcionalidades](#futuras-funcionalidades)
 * [Referências](#referências)
 
 ---
 
 ## 💡 Sobre
-> ***Um script que instala utilitários automaticamente e oferece ao usuário a opção de personalizar o ArchLinux (Xorg + i3-wm) com um tema semelhante ao KaliLinux.***
+> Este simples script permite instalar utilitários automaticamente por meio de uma lista *.txt*, aplicar um temas customizaveis automaticamente e adicionar wallpapers de forma dinâmica conforme a preferência do usuário, e restaurar às configurações originais automaticamencaso o usuário queira.
 
 ---
 
-## Como funciona?
-O script receberá o nome do gerenciador de pacotes do sistema e uma lista `.txt` com os utilitários que o usuário irá instalar, e assim iniciará a instalação dos pacotes no sistema.
-Com o script, o usuário também pode excluir os pacotes instalados com o script, usando o comando `--uninstall utilities.txt`.
+## Como funciona
+- O script deve ser executado dentro do diretório do repositório.
+- Permite instalar pacotes listados em um arquivo `.txt` por meio do gerenciador de pacotes especificado.
+- É possível remover todos os pacotes e arquivos instalados pelo script a qualquer momento.  
+- O usuário pode aplicar o temas **Kali-like** por exemplo, e que podem ser customizados.  
+- Também é possível configurar um **papel de parede dinâmico**, que muda automaticamente de acordo com o tempo configurado e o modo escolhido.  
+- Antes de qualquer modificação, arquivos ou diretórios de configuração são **backupados** com a extensão `.old` para garantir segurança.  
 
-O usuário também pode passar o argumento `--kalitheme` para configurar o tema padrão automático que desenvolvi, que simula a estética do KaliLinux. 
-Ao passar o argumento `--kalitheme`, o script irá instalar alguns pacotes adicionais como um terminal alternativo (kitty), wallpapers do kalilinux etc..., mas tudo poderá ser removido `--uninstall kalitheme`. Veja o que será adicionado e configurado **[Arquivo de instalação e configuração de pacotes](./kaliarch-theme/packages.json)**
-
-Com o argumento `--kalitheme` será instalado alguns pacotes e suas configurações, o usuário também pode passar o argumento `--dynamic-background` com o segundo argumento um número (por exemplo, `5`) para especificar o tempo de mudança de cada papel de parede (wallpaper) com o terceiro argumento para específicar se eles devem mudar de forma ramdomica `--randomize` ou na ordem padrão dos arquivos do diretório `--orderd` e por fim o quarto argumento, o caminho do diretório para os wallpapers (e.g `~/wallpapers/`).
-Você pode copiar o diretório `wallpapers` deste repositório para home.
-
-> 🔴 **As configurações originais do sistema não serão modificadas ou excluídas, elas serão salvas no mesmo local, com a extensão `.old` por segurança.**
-
-**Veja a lista de pacotes e arquivos que serão instalados no seu sistema, e o caminho para os arquivos de configurações que serão criados para eles [Packages list](packages.list)**
-**Com isso, você poderá modificar os arquivos de configurações adicionados conforme o necessário, ou retornar para os antigos que estão o extensão `.old`.**
+⚠️ **Importante:**  
+- Sempre recomendado executar apenas como usuário normal, o próprio script irá pedir a senha de *sudo* se necessário.
+- Após aplicar o tema, é recomendado revisar e, se necessário, personalizar os arquivos de configuração adicionados. 
+- Arquivos `.old` permitem restaurar a configuração original a qualquer momento.  
 
 ---
 
 ## Modos de Uso
+
 ```bash
 # Instalar pacotes listados em um arquivo
-python3 kaliarch.py pacman utilities.txt
+python3 KaliArch.py --install-utilities <e.g: pacman> utilities.txt
 
-# Desinstalar os pacotes instalados com a lista
-python3 kaliarch.py --uninstall utilities.txt
+# Desinstalar pacotes listados em um arquivo
+python3 KaliArch.py --uninstall-utilities <e.g: pacman> utilities.txt
 
-# Aplica o tema Kali-like e copia o diretório "wallpapers" do repositório para a home do usuário, e define um wallpaper do Kalilinux.
-python3 kaliarch.py --kalitheme
+# Aplicar o tema Kali-like
+python3 KaliArch.py --install-kalitheme <e.g: pacman>
 
 # Aplicar o tema Kali-like com papel de parede dinâmico
-python3 kaliarch.py --kalitheme --dynamic-background 5 --randomize ~/wallpapers/
+python3 KaliArch.py --dynamic-background 5 --randomize ~/wallpapers/ <e.g: kalitheme>
 
 # Também pode usar a ordem padrão em vez de aleatória
-python3 kaliarch.py --kalitheme --dynamic-background 5 --ordered ~/wallpapers/
+python3 KaliArch.py --dynamic-background 5 --ordered ~/wallpapers/ <e.g: kalitheme>
 
-# Remover todos os pacotes e arquivos de configurações instalados pelo script
-python3 kaliarch.py --uninstall kalitheme
+# Remover o tema Kali-like e restaurar backups
+python3 KaliArch.py --uninstall-kalitheme <e.g: pacman>
 ```
 ---
 
-### Recomendações
-- Configure a cor e transparência do terminal, se necessário.
-- Altere as fontes do kitty com `kitty + list-fonts`.
-- Configure o zsh como shell padrão.
+## Recomendações
 
----
-
-## Futuras funcionalidades
-- O usuário poderá passar o argumento `--uninstall-autoreplace kalitheme` para remover os pacotes e os arquivos de configuração instaldos pelo script, e subsitiuir automaticamente pelo arquivo .old dos diretórios deles.
+- Personalize o *packages.json* de *themes* ou o script se necessário, mas fique atento para seguir o padrão do script e de packages.json.
+- Personalize o `~/.config/i3/config` conforme suas preferências após aplicar o tema.
+- Configure a cor, tema ou transparência do terminal, se necessário.
+- Ajuste as fontes do **Kitty** se necessário.
+- Configure o **Zsh** como shell padrão.
 
 ---
 
 ## Referências
-- [Zsh](https://github.com/clamy54/kali-like-zsh-theme/blob/main/README.md)
 - [Temas Kitty](https://github.com/dexpota/kitty-themes)

@@ -281,7 +281,7 @@ def dynamic_background(sec: int, mode: str, wallpapers_path: str, wallpapers_typ
     script_path = expand_path("~/.dynamic_background.sh") 
     wallpapers_path = expand_path(wallpapers_path)
 
-    if wallpapers_type == "kalitheme":
+    if wallpapers_type == "kalitheme" and wallpapers_type in supported_wallpapers:
        if os.path.exists(wallpapers_path):
           print(f"Doing backup {wallpapers_path}")
           file_backup(wallpapers_path)
