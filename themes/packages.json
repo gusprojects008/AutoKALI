@@ -1,0 +1,32 @@
+{
+  "System packages": {
+    "kalitheme": {
+      "feh": "~/.config/feh/.conf",
+      "kitty": "~/.config/kitty/kitty.conf",
+      "picom": "~/.config/picom/picom.conf",
+      "i3": "~/.config/i3/config",
+      "i3lock": "~/.config/i3lock/config",
+      "scrot": "~/.config/scrot/config",
+      "imagemagick": "~/.config/imagemagick/policy.xml",
+      "zsh": "~/.zshrc",
+      "zsh-syntax-highlighting": "~/.zsh/zsh-syntax-highlighting.zsh",
+      "zsh-autosuggestions": "~/.zsh/zsh-autosuggestions.zsh",
+      "bash": ["~/.bash_logout", "~/.bashrc", "~/.bashrc.original", "~/.bash_profile"],
+      "bash-completion": ["/etc/bash.bashrc", "/etc/bash_completion", "/etc/bash_completion.d/"],
+      "ttf-firacode-nerd": "/usr/share/fonts/TTF/",
+      "noto-fonts-emoji": "/usr/share/fonts/noto/",
+      "ttf-nerd-fonts-symbols": "/usr/share/fonts/TTF/"
+    }
+  },
+  "Packages config": {
+    "kalitheme": {
+      "kitty": "kalitheme/kitty.conf",
+      "picom": "kalitheme/picom.conf",
+      "i3": "kalitheme/i3-config",
+      "i3lock": "kalitheme/.i3lock.sh",
+      "zsh": "kalitheme/.zshrc",
+      "bash": ["kalitheme/.bash_logout", "kalitheme/.bashrc", "kalitheme/.bashrc.original", "kalitheme/.bash_profile"],
+      "bash-completion": ["kalitheme/bash.bashrc", "kalitheme/bash_completion", "kalitheme/bash_completion.d/"]
+    }
+  }
+}
