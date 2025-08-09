@@ -5,7 +5,7 @@
       "kitty": "~/.config/kitty/kitty.conf",
       "picom": "~/.config/picom/picom.conf",
       "i3": "~/.config/i3/config",
-      "i3lock": "~/.config/i3lock/config",
+      "i3lock": "~/.config/i3lock/i3lock.sh",
       "scrot": "~/.config/scrot/config",
       "imagemagick": "~/.config/imagemagick/policy.xml",
       "zsh": "~/.zshrc",
@@ -22,7 +22,7 @@
       "kitty": "kalitheme/kitty.conf",
       "picom": "kalitheme/picom.conf",
       "i3": "kalitheme/i3-config",
-      "i3lock": "kalitheme/.i3lock.sh",
+      "i3lock": "kalitheme/i3lock.sh",
       "zsh": "kalitheme/.zshrc",
       "bash": ["kalitheme/.bash_logout", "kalitheme/.bashrc", "kalitheme/.bashrc.original", "kalitheme/.bash_profile"],
       "bash-completion": ["kalitheme/bash.bashrc", "kalitheme/bash_completion", "kalitheme/bash_completion.d/"]

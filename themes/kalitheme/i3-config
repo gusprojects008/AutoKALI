@@ -56,8 +56,8 @@ exec --no-startup-id setxkbmap br abnt2
 
 # !!! KaliArch !!!
 #exec --no-startup-id bash -c 'while true; do mapfile -t W < <(find "$HOME/wallpapers" -maxdepth 1 -type f); feh --no-fehbg --bg-scale --randomize "${W[@]}"; sleep 5; done &'
-exec_always --no-startup-id picom --config ~/.config/picom/picom.conf 
-bindsym $mod+Escape exec ~/.i3lock.sh
+exec_always --no-startup-id picom --config ~/.config/picom/picom.conf -b
+bindsym $mod+Escape exec ~/.config/i3lock/.i3lock.sh
 
 # kill focused window
 bindsym $mod+Shift+q kill
