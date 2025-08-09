@@ -1,0 +1,1 @@
+git+https://github.com/gusprojects008/terminalColors.git

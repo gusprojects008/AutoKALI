@@ -13,9 +13,8 @@
       "zsh-autosuggestions": "~/.zsh/zsh-autosuggestions.zsh",
       "bash": ["~/.bash_logout", "~/.bashrc", "~/.bashrc.original", "~/.bash_profile"],
       "bash-completion": ["/etc/bash.bashrc", "/etc/bash_completion", "/etc/bash_completion.d/"],
-      "ttf-firacode-nerd": "/usr/share/fonts/TTF/",
-      "noto-fonts-emoji": "/usr/share/fonts/noto/",
-      "ttf-nerd-fonts-symbols": "/usr/share/fonts/TTF/"
+      "ttf-fira-code": "/usr/share/fonts/TTF/",
+      "noto-fonts-emoji": "/usr/share/fonts/noto/"
     }
   },
   "Packages config": {
