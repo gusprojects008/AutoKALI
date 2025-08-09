@@ -33,6 +33,9 @@
 ## Modos de Uso
 
 ```bash
+# Instalar módulo para colorir mensagens do script
+pip install -r requirements.txt
+
 # Instalar pacotes listados em um arquivo
 python3 KaliArch.py --install-utilities <e.g: pacman> utilities.txt
 
