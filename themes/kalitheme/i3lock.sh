@@ -15,7 +15,7 @@ if ! scrot -q 100 "$IMG"; then
     exit 1
 fi
 
-# 2. Verificar comando ImageMagick
+# 2. Verificar ImageMagick
 if command -v magick >/dev/null; then
     IM_CMD="magick"
 elif command -v convert >/dev/null; then
@@ -35,15 +35,10 @@ fi
 DATE=$(date '+%d/%m/%Y')
 TIME=$(date '+%H:%M')
 
-# Tentar detectar fonte disponível
-if fc-list | grep -qi "DejaVu Sans"; then
-    FONT="DejaVu-Sans"
-elif fc-list | grep -qi "Liberation Sans"; then
-    FONT="Liberation-Sans"
-else
-    FONT=$(fc-match -f '%{family[0]}' sans 2>/dev/null || echo "Arial")
-fi
+# Detectar fonte de forma silenciosa
+FONT=$(fc-match -f '%{family[0]}' sans 2>/dev/null || echo "Arial")
 
+# Adicionar texto à imagem
 if ! $IM_CMD "$IMG" \
   -gravity center \
   -font "$FONT" \
@@ -52,13 +47,12 @@ if ! $IM_CMD "$IMG" \
   -annotate +0-100 "$DATE" \
   -pointsize $FONT_SIZE_TIME \
   -annotate +0+50 "$TIME" \
-  "$IMG"; then
+  "$IMG" 2>/dev/null; then
     echo "Aviso: Falha ao adicionar texto, continuando sem texto..." >&2
 fi
 
-# 5. Bloquear tela (versão mais compatível)
-if i3lock -h | grep -q "--color"; then
-    # Versão mais nova do i3lock
+# 5. Bloquear tela (verificação silenciosa)
+if i3lock --help 2>&1 | grep -q -- "--color"; then
     i3lock \
       -i "$IMG" \
       -n \
@@ -66,14 +60,13 @@ if i3lock -h | grep -q "--color"; then
       --color=000000 \
       --pass-media-keys \
       --pass-screen-keys \
-      --pass-volume-keys
+      --pass-volume-keys 2>/dev/null
 else
-    # Versão mais antiga
     i3lock \
       -i "$IMG" \
       -n \
       -e \
-      -c 000000
+      -c 000000 2>/dev/null
 fi
 
 # Limpar
